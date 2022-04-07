@@ -64,17 +64,6 @@ gyroscope; picture-in-picture" allowfullscreen>
         document.write("<video controls id='video' src="+vidurl+"></video>");
 
 
-function getembed(){
-            var code = `
-<iframe width="560" height="315" 
-scrolling="no"
-src="${location.href}?id=${video}" 
-frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-          `;
-          prompt('Here is Your Embed Code :- ',code);
-}
 
 function getParameterByName(name, url = window.location.href) {
     name = name.replace(/[\[\]]/g, '\\$&');
