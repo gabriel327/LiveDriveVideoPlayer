@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
 	<meta charset="UTF-8">
@@ -22,7 +21,18 @@
 			height: 100%;
 			position: absolute;
 		}
-
+.embed {
+    position: absolute;
+    background: none;
+    top: 2px;
+    z-index: 999;
+    color: aqua;
+    font-family: sans-serif;
+    font-size: 18px;
+    border: 0;
+    font-weight: 600;
+    right: 10px;
+}
 	</style>
 	<script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js">
 	</script>
@@ -33,7 +43,18 @@
         var embed="";
 
         if(!getParameterByName('id') || getParameterByName('ib')){
-          var eid = prompt('Enter Drive Video ID :- ') 
+          var eid = prompt('Enter Drive Video ID :- ');
+          embed = `
+<iframe width="560" height="315" 
+scrolling="no"
+src="${location.href}?id=${eid}" 
+frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+          `;
+          prompt('Here is Your Embed Code :- ',embed);
+          window.location.href = window.location.href+'?id='+eid;
+        } 
         video = getParameterByName('id') ;
         if(getParameterByName('ib')){
             video = btoa(getParameterByName('ib'));
@@ -42,6 +63,17 @@
         document.write("<video controls id='video' src="+vidurl+"></video>");
 
 
+function getembed(){
+            var code = `
+<iframe width="560" height="315" 
+scrolling="no"
+src="${location.href}?id=${video}" 
+frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+          `;
+          prompt('Here is Your Embed Code :- ',code);
+}
 
 function getParameterByName(name, url = window.location.href) {
     name = name.replace(/[\[\]]/g, '\\$&');
@@ -69,14 +101,14 @@ function getParameterByName(name, url = window.location.href) {
 			"width": null
 		},
 		"autoPlay": true,
-		"mute": false,
+		"mute": true,
 		"allowTheatre": true,
 		"playPauseAnimation": true,
 		"playbackRateEnabled": true,
 		"allowDownload": false,
 		"playButtonShowing": true,
 		"fillToContainer": false,
-		"posterImage": "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/3G1Q5xF40HkUBJXxt2DQgQzKTp5.jpg"
+		"posterImage": ""
 	},
 	"vastOptions": {
 		"adList": [],
